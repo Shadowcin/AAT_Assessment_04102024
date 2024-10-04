@@ -1,0 +1,36 @@
+﻿@page "/"
+ 
+<MudCard>
+    <MudCardContent>
+        <MudText Typo="Typo.h5">Compute Data</MudText>
+        <br />
+
+        <MudButton Style="margin: 0 5px;" Variant="Variant.Filled" Color="Color.Primary" OnClick="StartProcess" Disabled="@DisableCompute">
+            Compute
+        </MudButton>
+
+        <MudButton Style="margin: 0 5px;" Variant="Variant.Filled" Color="Color.Secondary" OnClick="SaveData" Disabled="@(DisableSaveData)">
+            Save Data
+        </MudButton>
+
+        @if (IsDataSaved)
+        {
+            <MudButton Style="margin: 0 5px;" Variant="Variant.Filled" Color="Color.Info" OnClick="DownloadXml">
+                Download XML File
+            </MudButton>
+            <MudButton Style="margin: 0 5px;" Variant="Variant.Filled" Color="Color.Info" OnClick="DownloadBinary">
+                Download Binary File
+            </MudButton>
+        }
+
+        <MudSpacer />
+
+        <MudText Typo="Typo.body1">Total: @Total</MudText>
+        <MudText Typo="Typo.body1">Total Odd Numbers: @TotalOdd</MudText>
+        <MudText Typo="Typo.body1">Total Even Numbers: @TotalEven</MudText>
+    </MudCardContent>
+</MudCard>
+
+<MudOverlay Visible="@ShowLoading">
+    <MudProgressCircular Size="Size.Large" Indeterminate="true" />
+</MudOverlay>
